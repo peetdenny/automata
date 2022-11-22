@@ -11,6 +11,6 @@ def random_population(world, size):
         world[randint(0,getWidth()-1), randint(0,getHeight()-1)] = 1
 
 def create_blinker(world, x, y):
-    world[x,y]=1
-    world[x-1,y]=1
-    world[x+1,y]=1
+    world.get_cell(x,y).alive = 1
+    world.get_cell(x-1,y).alive = 1
+    world.get_cell(x+1,y).alive = 1

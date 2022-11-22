@@ -1,5 +1,6 @@
 from time import sleep
 import configurations as configs
+from world import World
 import pygame
 from pygame import Rect
 from random import randint
@@ -15,17 +16,13 @@ cell_size = (pixel_size + (margin * 2))
 
 
 def init_world(width, height):
-    width = int(width / cell_size)
-    height = int(height / cell_size)
-    world_map = np.zeros((width, height))
+    world = World(width, height)
     print(f"initialised world with dimenions {width} x {height}")
 
     #set initial conditions
     # configs.random_population(world_map, 500)
-    configs.create_blinker(world_map, 40,40)
-
-
-    return world_map, width, height
+    configs.create_blinker(world, 40,40)
+    return world, width, height
 
 def init_screen():
     info = pygame.display.Info()
@@ -38,50 +35,15 @@ def init_screen():
 
 
 screen, scr_width, scr_height = init_screen()
-world, width, height = init_world(scr_width, scr_height)
-
-def count_live_neighbours(i,j):
-    count = 0
-    not_left_edge = i > 0
-    not_top_edge = j > 0
-    not_right_edge = i < width-1
-    not_bottom_edge = j < height-1
-
-    # check each of 9 cells
-    if not_left_edge and not_top_edge and world[i-1,j-1] == 1: count +=1
-    if not_left_edge and world[i-1,j] == 1: count +=1 
-    if not_left_edge and not_bottom_edge and world[i-1,j+1] == 1: count +=1 
-
-    if not_top_edge and world[i,j-1] == 1: count +=1 
-    if not_bottom_edge and world[i,j+1] == 1: count +=1 
-
-    if not_right_edge and not_top_edge and world[i+1,j-1] == 1: count +=1 
-    if not_right_edge and world[i+1,j] == 1: count +=1 
-    if not_right_edge and not_bottom_edge and world[i+1,j+1] == 1: count +=1 
-    return count
-
-def update_world():
-    for i in range(width):
-        for j in range(height):
-            live_neighbours = count_live_neighbours(i,j)
-            # Any dead cell with exactly three live neighbours becomes a live cell, as if by reproduction.
-            if world[i,j] == 0 and live_neighbours == 3:
-                world[i,j] = 1
-            # if live_neighbours > 0: print(f"Cell at position {i},{j} has {live_neighbours} live neighbours")
-            # Any live cell with fewer than two live neighbours dies, as if by underpopulation.
-            if world[i,j] == 1 and live_neighbours < 2: 
-                world[i,j] = 0
-            # Any live cell with two or three live neighbours lives on to the next generation.
-            # Any live cell with more than three live neighbours dies, as if by overpopulation
-            if world[i,j] == 1 and live_neighbours > 3:
-                world[i,j] = 0
+world, width, height = init_world(int(scr_width/cell_size), int(scr_height/cell_size))
             
 
 def redraw_world():
-  for i in range(width):
-        for j in range(height):
-            if world[i,j] ==1:
-                pygame.draw.rect(screen, cell_color, Rect(i*cell_size,j*cell_size,pixel_size,pixel_size))
+  for row in world.get_rows():
+        for cell in row:
+            if cell.is_alive():
+                print("Cell alive at", cell.x, cell.y)
+                pygame.draw.rect(screen, cell_color, Rect(cell.x*cell_size,cell.y*cell_size,pixel_size,pixel_size))
                 # pygame.draw.rect(screen, (255,255,255), Rect(randint(0,width),randint(0,height),pixel_size,pixel_size))
 
 
@@ -95,7 +57,7 @@ while True:
     redraw_world()
 
     # Update matrix
-    update_world()
+    world.tick()
 
     pygame.display.flip()
     sleep(1)
