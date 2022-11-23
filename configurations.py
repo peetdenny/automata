@@ -10,6 +10,22 @@ def random_population(world, size):
     for i in range(size):
         world[randint(0,getWidth()-1), randint(0,getHeight()-1)] = 1
 
+
+# Still lifes
+
+def create_beehive(world, x, y):
+    world.get_cell(x-1,y-1).alive=1
+    world.get_cell(x,y-1).alive=1
+
+    world.get_cell(x-2,y).alive=1
+    world.get_cell(x+1,y).alive=1
+
+    world.get_cell(x-1,y+1).alive=1
+    world.get_cell(x,y+1).alive=1
+
+
+# Oscillators
+
 def create_blinker(world, x, y):
     world.get_cell(x,y).alive = 1
     world.get_cell(x-1,y).alive = 1
