@@ -24,7 +24,7 @@ def init_world(width, height):
     configs.create_blinker(world, 40,40)
     configs.create_toad(world, 100,60)
     configs.create_beehive(world, 10, 50)
-    
+    configs.create_glider(world, 14, 14)
     return world, width, height
 
 def init_screen():

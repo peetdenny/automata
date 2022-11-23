@@ -40,3 +40,15 @@ def create_toad(world, x, y):
     world.get_cell(x,y-1).alive=1
     world.get_cell(x+1,y).alive=1
     world.get_cell(x+1,y+1).alive=1
+
+
+# Spaceships
+
+def create_glider(world, x, y):
+    world.get_cell(x-1,y-1).alive = 1
+    
+    world.get_cell(x,y).alive = 1
+    world.get_cell(x+1,y).alive = 1
+    
+    world.get_cell(x-1,y+1).alive = 1
+    world.get_cell(x,y+1).alive = 1
