@@ -63,5 +63,5 @@ while True:
     world.tick()
 
     pygame.display.flip()
-    sleep(1)
+    sleep(0.1)
     screen.fill(background_color)
