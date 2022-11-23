@@ -22,6 +22,7 @@ def init_world(width, height):
     #set initial conditions
     # configs.random_population(world_map, 500)
     configs.create_blinker(world, 40,40)
+    configs.create_toad(world, 100,60)
     return world, width, height
 
 def init_screen():

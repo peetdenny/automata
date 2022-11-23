@@ -24,7 +24,7 @@ class Automaton:
         for n in neighbours:
             if n.is_alive():
                 live_neighbours +=1
-        if live_neighbours > 0: print(f"Cell at position {self.x},{self.y} has {live_neighbours} live neighbours and {len(neighbours)} neighbours total")
+        # if live_neighbours > 0: print(f"Cell at position {self.x},{self.y} has {live_neighbours} live neighbours and {len(neighbours)} neighbours total")
         # we need this to queue up operations so as not to have phantom automata - those that were alive, but were killed during the current tick
         buf = self.world.get_buffer() 
 

@@ -14,3 +14,13 @@ def create_blinker(world, x, y):
     world.get_cell(x,y).alive = 1
     world.get_cell(x-1,y).alive = 1
     world.get_cell(x+1,y).alive = 1
+
+
+def create_toad(world, x, y):
+    world.get_cell(x-2,y).alive=1
+    world.get_cell(x-2,y+1).alive=1
+    world.get_cell(x-1,y+2).alive=1
+    
+    world.get_cell(x,y-1).alive=1
+    world.get_cell(x+1,y).alive=1
+    world.get_cell(x+1,y+1).alive=1
