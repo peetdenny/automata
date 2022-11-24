@@ -52,3 +52,23 @@ def create_glider(world, x, y):
     
     world.get_cell(x-1,y+1).alive = 1
     world.get_cell(x,y+1).alive = 1
+
+
+
+# Set pieces
+
+def classic_config1(world):
+    """ 4 gliders spawn beautiful large symmetries. ~1500 generations"""
+    create_blinker(world, 40,40)
+    create_toad(world, 100,60)
+    create_glider(world, 14, 14)
+    create_glider(world, 3, 3)
+    create_glider(world, 52, 14)
+    create_glider(world, 42, 3)
+
+
+def annihilation1(world):
+    """ Two beehives and a glider totally annihilate"""
+    create_beehive(world, 50, 15)
+    create_beehive(world, 50, 20)
+    create_glider(world,34, 5)

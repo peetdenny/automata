@@ -10,9 +10,13 @@ pygame.init()
 
 background_color="#C8C6D7"
 cell_color = "#006491"
+text_color = "#4E3D42"
 pixel_size = 8
 margin = 1
 cell_size = (pixel_size + (margin * 2))
+
+label_font = pygame.font.SysFont("Tahoma", 20)
+text_font = pygame.font.SysFont(None, 20)
 
 
 def init_world(width, height):
@@ -21,10 +25,14 @@ def init_world(width, height):
 
     #set initial conditions
     # configs.random_population(world_map, 500)
-    configs.create_blinker(world, 40,40)
-    configs.create_toad(world, 100,60)
-    configs.create_beehive(world, 10, 50)
-    configs.create_glider(world, 14, 14)
+    # configs.classic_config1(world)
+    # configs.create_beehive(world, 70, 20)
+    
+    configs.create_beehive(world, 50, 15)
+    configs.create_toad(world, 48, 20)
+    configs.create_beehive(world, 40, 20)
+    configs.create_glider(world,34, 6)
+
     return world, width, height
 
 def init_screen():
@@ -45,9 +53,13 @@ def redraw_world():
   for row in world.get_rows():
         for cell in row:
             if cell.is_alive():
-                print("Cell alive at", cell.x, cell.y)
                 pygame.draw.rect(screen, cell_color, Rect(cell.x*cell_size,cell.y*cell_size,pixel_size,pixel_size))
                 # pygame.draw.rect(screen, (255,255,255), Rect(randint(0,width),randint(0,height),pixel_size,pixel_size))
+                generation_text = label_font.render(f"Generation: {world.get_stats().ticks}", True, text_color)
+                reproduction_text = label_font.render(f"Reproduction: {world.get_stats().reproduction}", True, text_color)
+                screen.blit(generation_text, (20, 20))
+                screen.blit(reproduction_text, (20, 40))
+
 
 
 while True:
