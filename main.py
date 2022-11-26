@@ -28,7 +28,7 @@ def init_world(width, height):
     # configs.classic_config1(world)
     # configs.create_beehive(world, 70, 20)
     
-    configs.create_the_R_pentomino(world, 50,50)
+    configs.create_the_B_pentomino(world, 70,50)
 
     return world, width, height
 
@@ -72,5 +72,5 @@ while True:
     world.tick()
 
     pygame.display.flip()
-    sleep(0.1)
+    sleep(2)
     screen.fill(background_color)

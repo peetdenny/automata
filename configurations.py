@@ -62,6 +62,20 @@ def create_the_R_pentomino(world, x, y):
     world.get_cell(x-1,y).alive = 1
     world.get_cell(x+1,y-1).alive = 1
 
+
+# Methuselahs
+def create_the_B_pentomino(world, x, y):
+    """ Creates The B Pentomino"""
+    world.get_cell(x-1,y-1).alive = 1
+    world.get_cell(x+1,y-1).alive = 1
+    world.get_cell(x+2,y-1).alive = 1
+
+    world.get_cell(x-1,y).alive = 1
+    world.get_cell(x,y).alive = 1
+    world.get_cell(x+1,y).alive = 1
+
+    world.get_cell(x,y+1).alive = 1
+
 # Set pieces
 
 def classic_config1(world):
