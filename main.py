@@ -28,10 +28,7 @@ def init_world(width, height):
     # configs.classic_config1(world)
     # configs.create_beehive(world, 70, 20)
     
-    configs.create_beehive(world, 50, 15)
-    configs.create_toad(world, 48, 20)
-    configs.create_beehive(world, 40, 20)
-    configs.create_glider(world,34, 6)
+    configs.create_the_R_pentomino(world, 50,50)
 
     return world, width, height
 
