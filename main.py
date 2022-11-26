@@ -28,7 +28,7 @@ def init_world(width, height):
     # configs.classic_config1(world)
     # configs.create_beehive(world, 70, 20)
     
-    configs.create_the_Pi_pentomino(world, 70,50)
+    configs.create_Thunderbird(world, 70,50)
 
     return world, width, height
 

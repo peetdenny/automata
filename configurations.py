@@ -87,6 +87,16 @@ def create_the_Pi_pentomino(world, x, y):
 
     world.get_cell(x-1,y+1).alive = 1
     world.get_cell(x+1,y+1).alive = 1
+
+def create_Thunderbird(world, x, y):
+    """ Creates The Thunderbird Methuselah"""
+    world.get_cell(x-1,y-1).alive = 1
+    world.get_cell(x,y-1).alive = 1
+    world.get_cell(x+1,y-1).alive = 1
+
+    world.get_cell(x,y+1).alive = 1
+    world.get_cell(x,y+2).alive = 1
+    world.get_cell(x,y+3).alive = 1
     
 # Set pieces
 
