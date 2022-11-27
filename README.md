@@ -13,4 +13,7 @@ Run with
 
 # The Thunderbird Methuselah
 This is the last 30 seconds of one of the standard set pieces running
-[Imgur](https://imgur.com/Exk4zpy)
+https://imgur.com/gallery/Exk4zpy
+
+
+
