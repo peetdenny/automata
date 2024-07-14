@@ -63,7 +63,6 @@ def create_the_R_pentomino(world, x, y):
     world.get_cell(x+1,y-1).alive = 1
 
 
-# Methuselahs
 def create_the_B_pentomino(world, x, y):
     """ Creates The B-Pentomino"""
     world.get_cell(x-1,y-1).alive = 1
